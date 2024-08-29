@@ -1,13 +1,15 @@
 <ion-header [translucent]="true"class="ion-text-center ion-no-border">
-  <ion-toolbar>
-    <ion-title>home</ion-title>
+  <ion-toolbar color="medium">
+    <ion-title>
+      <h1>Skeletton APP</h1>
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true" class="ion-no-border">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">home</ion-title>
+      <ion-title size="large" class="title">Home</ion-title>
     </ion-toolbar>
   </ion-header>
   Bienvenido {{username}}
@@ -19,27 +21,39 @@
       <ion-input label="Apellido" labelPlacement="floating" [(ngModel)]="lastname"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-select label="Nivel Educacional">
-        <ion-option value="pre">Pre Escolar</ion-option>
-        <ion-option value="basica">Ed. Basica</ion-option>
-        <ion-option value="media">Ed. Media</ion-option>
-        <ion-option value="superior">Ed. Superior</ion-option>
-        <ion-option value="postgrado">Postgrado</ion-option>
-        <ion-option value="doct">Doctorado</ion-option>
+      <ion-select label="Nivel Educacional" [(ngModel)]="educationLevel">
+        <ion-select-option *ngFor="let level of educationLevels | keyvalue" value="{{level.key}}">{{level.value}}</ion-select-option>
+        <!--
+        <ion-select-option value="basica">Ed. Basica</ion-select-option>
+        <ion-select-option value="media">Ed. Media</ion-select-option>
+        <ion-select-option value="superior">Ed. Superior</ion-select-option>
+        <ion-select-option value="postgrado">Postgrado</ion-select-option>
+        <ion-select-option value="doctorado">Doctorado</ion-select-option>
+        -->
       </ion-select>
     </ion-item>
     <ion-item>
-      <ion-input label="Fecha Nac">
+      <ion-input label="Fecha Nac"></ion-input>
         <ion-button id="btn-calendar">
           <ion-icon name="calendar"></ion-icon>
         </ion-button>
         <ion-popover trigger="btn-calendar" triggerAction="click">
           <ng-template>
-            <ion-datetime></ion-datetime>
+            <ion-datetime [(ngModel)]="bday"></ion-datetime>
           </ng-template>
         </ion-popover>
-        
-      </ion-input>
     </ion-item>
   </ion-list>
+
+  <div class="botones">
+    <ion-button (click)="clean()">Limpiar</ion-button>
+    <ion-button>Mostrar</ion-button>
+  </div>
+
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar color="medium">
+    <ion-title>App Desarrollada por FcaHJ</ion-title>
+  </ion-toolbar>
+</ion-footer>
