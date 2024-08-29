@@ -1,0 +1,33 @@
+<ion-header [translucent]="true" class="ion-text-center ion-no-border">
+  <ion-toolbar>
+    <ion-title>
+      <h1>Skeletton APP</h1>
+      <h6>Aqui comienza todo</h6>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content >
+  <ion-header [translucent]="true" class="ion-text-center ion-no-border">
+    <br>
+    <br>
+    <br>
+    <br>
+    <ion-title >{{mensaje}}</ion-title>
+  </ion-header>
+
+  <div id="container">
+    <ion-list>
+      <ion-item>
+        <ion-input [(ngModel)]="username" label="Nombre de usuario" typo="text" labelPlacement="stacked"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input [(ngModel)]="password" label="Contraseña" type="password" labelPlacement="stacked"></ion-input>
+      </ion-item>
+    </ion-list>
+    <br>
+    <ion-button expand="full" (click)="validateLogin()">Ingresar</ion-button>
+    <br>
+    <a href="profile">Crea tu cuenta gratis</a>
+  </div>
+</ion-content>

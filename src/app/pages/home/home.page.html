@@ -1,0 +1,45 @@
+<ion-header [translucent]="true"class="ion-text-center ion-no-border">
+  <ion-toolbar>
+    <ion-title>home</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-no-border">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">home</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  Bienvenido {{username}}
+  <ion-list>
+    <ion-item>
+      <ion-input label="Nombre" labelPlacement="floating" [(ngModel)]="name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input label="Apellido" labelPlacement="floating" [(ngModel)]="lastname"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-select label="Nivel Educacional">
+        <ion-option value="pre">Pre Escolar</ion-option>
+        <ion-option value="basica">Ed. Basica</ion-option>
+        <ion-option value="media">Ed. Media</ion-option>
+        <ion-option value="superior">Ed. Superior</ion-option>
+        <ion-option value="postgrado">Postgrado</ion-option>
+        <ion-option value="doct">Doctorado</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-input label="Fecha Nac">
+        <ion-button id="btn-calendar">
+          <ion-icon name="calendar"></ion-icon>
+        </ion-button>
+        <ion-popover trigger="btn-calendar" triggerAction="click">
+          <ng-template>
+            <ion-datetime></ion-datetime>
+          </ng-template>
+        </ion-popover>
+        
+      </ion-input>
+    </ion-item>
+  </ion-list>
+</ion-content>
