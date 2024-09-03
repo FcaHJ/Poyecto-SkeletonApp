@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavigationExtras, Route, Router } from '@angular/router';
+import { NavigationExtras, Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 
 @Component({
@@ -10,7 +10,7 @@ import { ToastController } from '@ionic/angular';
 export class LoginPage implements OnInit {
 
     /** INTERPOLACION **/
-    /* 1era opcion colocar ! al final de la variable  EJ:*/
+    /* 1era opcion colocar ! al final de la variable  EJ: mensaje!*/
     /*2da opcion, despues del string indicar el valor de la variable, 'message: string = "";' */
     mensaje: string;
     username: string;
@@ -27,11 +27,8 @@ export class LoginPage implements OnInit {
   }
   
     validateLogin(){
-      const usernameValidation: string = " admin";
-      const paaswordValidation: string = " 1234";
       if (
-        this.password === paaswordValidation &&
-        this.username === usernameValidation) {
+        this.validateLogin(this.username)) {
         /*completar*/
           this.generateMessage('Datos correctos', 'success');
           let extras: NavigationExtras = {

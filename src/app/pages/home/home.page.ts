@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -15,9 +16,10 @@ export class HomePage implements OnInit {
   bday: string = '';
 
   educationLevels: Map<string, string> = new Map<string, string>();
+  alertButton: any;
 
 
-  constructor(private router: Router) { 
+  constructor(private router: Router, private alertController: AlertController ) { 
     const state = this.router.getCurrentNavigation()?.extras?.state;
     if (state) {
       this.username = state['user'];
@@ -32,8 +34,17 @@ export class HomePage implements OnInit {
   }
 
 
-  // eslint-disable-next-line @angular-eslint/no-empty-lifecycle-method
-  ngOnInit(){
+  ngOnInit(): void {
+    throw new Error('Method not implemented.');
+  }
+
+  async showInfo(){
+    const alert = await this.alertController.create({
+      header: 'Usuario',
+      subHeader: 'Componente',
+      message: 'El nombre de usuario es $(this.name)',
+      buttons: this.alertButton
+    })
   }
 
   clean(){
