@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+
 import { AlertController } from '@ionic/angular';
 
 @Component({
@@ -14,9 +15,9 @@ export class HomePage implements OnInit {
   lastname: string = '';
   educationLevel: string = '';
   bday: string = '';
+  alertButtons = ['Close'];
 
   educationLevels: Map<string, string> = new Map<string, string>();
-  alertButton: any;
 
 
   constructor(private router: Router, private alertController: AlertController ) { 
@@ -41,9 +42,9 @@ export class HomePage implements OnInit {
   async showInfo(){
     const alert = await this.alertController.create({
       header: 'Usuario',
-      subHeader: 'Componente',
-      message: 'El nombre de usuario es $(this.name)',
-      buttons: this.alertButton
+      subHeader: '[controller]',
+      message: `El nombre de usuario es ${this.name} ${this.lastname}`,
+      buttons: this.alertButtons
     })
   }
 
