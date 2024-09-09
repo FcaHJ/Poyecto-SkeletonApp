@@ -45,7 +45,8 @@ export class HomePage implements OnInit {
       subHeader: '[controller]',
       message: `El nombre de usuario es ${this.name} ${this.lastname}`,
       buttons: this.alertButtons
-    })
+    });
+    alert.present();
   }
 
   clean(){
