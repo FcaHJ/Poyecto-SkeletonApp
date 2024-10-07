@@ -7,7 +7,9 @@ import { IonicModule } from '@ionic/angular';
 import { HomePageRoutingModule } from './home-routing.module';
 
 import { HomePage } from './home.page';
-import { SegmentComponent } from 'src/app/components/segment/segment.component';
+import { WorkExpComponent } from 'src/app/components/work-exp/work-exp.component';
+import { MyDataComponent } from 'src/app/components/my-data/my-data.component';
+import { CertificationsComponent } from 'src/app/components/certifications/certifications.component';
 
 @NgModule({
   imports: [
@@ -16,6 +18,6 @@ import { SegmentComponent } from 'src/app/components/segment/segment.component';
     IonicModule,
     HomePageRoutingModule
   ],
-  declarations: [HomePage, SegmentComponent]
+  declarations: [HomePage, WorkExpComponent, MyDataComponent, CertificationsComponent]
 })
 export class HomePageModule {}

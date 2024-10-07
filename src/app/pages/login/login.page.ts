@@ -24,32 +24,32 @@ export class LoginPage implements OnInit {
       /*3era opcion declararlo en el contructor*/
       this.mensaje = "Bienvenido!";
     }
-  ngOnInit(): void {
-    throw new Error('Method not implemented.');
+  ngOnInit() {
   }
   
-    validateLogin(){
-      if (
-        this.loginService.validateLogin(this.username, this.password)) {
-          this.generateMessage('Datos correctos', 'success');
-          let extras: NavigationExtras = {
-            state: {user: this.username}
-          }
-          this.router.navigate(['/home'], extras);
-          console.log('pass');
-      }else{
-        this.generateMessage('Datos incorrectos', 'danger');
-      }
-    } 
-    async generateMessage(message: string, color: string){
-      const toast = await this.toastController.create({
-        /* mensage de error o exito en credenciales de inicio de sesion */
-        message: message,
-        duration: 3000 /* en milisegundos */,
-        position: 'bottom',
-        color: color
-      });
-      await toast.present();
+  validateLogin(){
+    if (
+      this.loginService.validateLogin(this.username, this.password)) {
+        this.generateMessage('Datos correctos', 'success');
+        let extras: NavigationExtras = {
+          state: {user: this.username}
+        }
+        this.router.navigate(['/home'], extras);
+        console.log('pass');
+    }else{
+      this.generateMessage('Datos incorrectos', 'danger');
     }
   }
+
+  async generateMessage(message: string, color: string){
+    const toast = await this.toastController.create({
+      /* mensage de error o exito en credenciales de inicio de sesion */
+      message: message,
+      duration: 3000 /* en milisegundos */,
+      position: 'bottom',
+      color: color
+    });
+    await toast.present();
+  }
+}
 

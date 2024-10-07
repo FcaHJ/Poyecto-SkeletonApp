@@ -7,45 +7,31 @@
       <h1>Skeletton APP</h1>
     </ion-title>
   </ion-toolbar>
+  <ion-toolbar>
+      <ion-segment (ionChange)="segmentChanged($event)" value="data">
+        <ion-segment-button value="data">
+          <ion-icon name="analytics"></ion-icon>
+        </ion-segment-button>
+        <ion-segment-button value="work-exp">
+          <ion-icon name="briefcase"></ion-icon>
+        </ion-segment-button>
+        <ion-segment-button value="certifications">
+          <ion-icon name="document-text"></ion-icon>
+        </ion-segment-button>
+      </ion-segment>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true" class="ion-text-center ion-no-border">
-  <ion-header collapse="condense">
-    <app-segment-component></app-segment-component>
-  </ion-header>
-  <ion-list>
-    <ion-item>
-      Bienvenido {{username}}
-    </ion-item>
-    <ion-item>
-      <ion-input label="Nombre" labelPlacement="floating" [(ngModel)]="name"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-input label="Apellido" labelPlacement="floating" [(ngModel)]="lastname"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-select label="Nivel Educacional" [(ngModel)]="educationLevel">
-        <ion-select-option *ngFor="let level of educationLevels | keyvalue" value="{{level.key}}">{{level.value}}</ion-select-option>
-      </ion-select>
-    </ion-item>
-    <ion-item>
-      <ion-input label="Fecha Nac" [(ngModel)]="bday" readonly></ion-input>
-        <ion-button id="btn-calendar">
-          <ion-icon name="calendar"></ion-icon>
-        </ion-button>
-        <ion-popover trigger="btn-calendar" triggerAction="click">
-          <ng-template>
-            <ion-datetime [(ngModel)]="bday"></ion-datetime>
-          </ng-template>
-        </ion-popover>
-    </ion-item>
-  </ion-list>
-
-  <div class="botones">
-    <ion-button (click)="clean()">Limpiar</ion-button>
-    <ion-button (click)="showInfo()">Mostrar</ion-button>
-  </div>
-
+  <ng-container *ngIf="selectedSegment == 'data'">
+    <app-my-data></app-my-data>
+  </ng-container>
+  <ng-container *ngIf="selectedSegment == 'work-exp'">
+    <app-work-exp></app-work-exp>
+  </ng-container>
+  <ng-container *ngIf="selectedSegment == 'certifications'">
+    <app-certifications></app-certifications>
+  </ng-container>
 </ion-content>
 
 <ion-footer>
