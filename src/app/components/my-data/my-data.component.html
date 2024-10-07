@@ -1,3 +1,32 @@
-<p>
-  my-data works!
-</p>
+  <ion-list>
+    <ion-item>
+      Bienvenido {{username}}
+    </ion-item>
+    <ion-item>
+      <ion-input label="Nombre" labelPlacement="floating" [(ngModel)]="name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input label="Apellido" labelPlacement="floating" [(ngModel)]="lastname"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-select label="Nivel Educacional" [(ngModel)]="educationLevel">
+        <ion-select-option *ngFor="let level of educationLevels | keyvalue" value="{{level.key}}">{{level.value}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-input label="Fecha Nac" [(ngModel)]="bday" readonly></ion-input>
+        <ion-button id="btn-calendar">
+          <ion-icon name="calendar"></ion-icon>
+        </ion-button>
+        <ion-popover trigger="btn-calendar" triggerAction="click">
+          <ng-template>
+            <ion-datetime [(ngModel)]="bday"></ion-datetime>
+          </ng-template>
+        </ion-popover>
+    </ion-item>
+  </ion-list>
+
+  <div class="botones">
+    <ion-button (click)="clean()">Limpiar</ion-button>
+    <ion-button (click)="showInfo()">Mostrar</ion-button>
+  </div>
