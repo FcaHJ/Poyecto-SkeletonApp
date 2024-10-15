@@ -1,16 +1,41 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>Skeletton APP</ion-title>
-    <ion-buttons>
-      <ion-back-button texr="a"></ion-back-button>
-    </ion-buttons>
+    <ion-title>
+      Skeleton APP
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Perfil</ion-title>
-    </ion-toolbar>
-  </ion-header>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Rick And Morty</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-label *ngIf="info">Cantidad elementos: {{info.count}}</ion-label>
+
+      <ion-list>
+        <ion-item>
+          <ion-button (click)="backPage()" slot="start">
+            <ion-icon name="arrow-back"></ion-icon>
+          </ion-button>
+          <ion-input type="number" [(ngModel)]="pageNumber"></ion-input>
+          <ion-button (click)="loadPage()" slot="end">
+            <ion-icon name="reload-outline"></ion-icon>
+          </ion-button>
+          <ion-button (click)="forwardPage()" slot="end">
+            <ion-icon name="arrow-forward"></ion-icon>
+          </ion-button>
+        </ion-item>
+        <ion-item *ngFor="let item of results">
+          <ion-label>{{item.name}}</ion-label>
+          <ion-button fill="clear" [routerLink]="['/character-detail', item.id]">
+            <ion-icon name="options-outline"></ion-icon>
+          </ion-button>
+          <img src="{{item.image}}" width="100px" height="100px"/>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
