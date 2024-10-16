@@ -78,7 +78,7 @@ export class ProfilePage implements OnInit {
       message: 'Cargando...'
     });
     loader.present()
-    this.api.getData(this.pageNumber).subscribe((data) => {
+    this.api.getData().subscribe((data) => {
       this.info = data.info;
       this.results = data.results;
       console.log(data);

@@ -9,8 +9,8 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
-  getData(page: number){
+  getData(){
     return this.http
-    .get<Characters>(`https://rickandmortyapi.com/api/character?page=${page}`);
+    .get<Characters>(`https://rickandmortyapi.com/api/character?page=`);
   }
 }

@@ -19,6 +19,20 @@ const routes: Routes = [
     path: 'home',
     loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
   },
+  {
+    path: 'json-placeholder',
+    loadChildren: () => import('./pages/json-placeholder/json-placeholder.module').then( m => m.JsonPlaceholderPageModule)
+  },
+  {
+    path: 'character-detail',
+    redirectTo: 'character-detail/0',
+    pathMatch: 'full'
+  },
+  {
+    path: 'characters-detail:id',
+    loadChildren: () => import('./pages/characters-detail/characters-detail.module').then( m => m.CharactersDetailPageModule)
+  },
+
 ];
 
 @NgModule({
